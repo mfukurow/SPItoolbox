@@ -89,3 +89,17 @@ def plotIPI_wraw(
     axes[1].set_xlim(xlim)
     print(type(axes))
     return axes
+
+
+def histIPI(
+    t_EOD: np.ndarray,
+    bins: np.ndarray = range(0, 1000, 5),
+    ax: Optional[matplotlib.axes.Axes] = None,
+) -> matplotlib.axes.Axes:
+    if ax is None:
+        _, ax = plt.subplots()
+    IPI = np.diff(t_EOD) * 1000
+    ax.hist(IPI, bins=bins)
+    ax.set_xlabel("IPI (ms)")
+    ax.set_ylabel("Number of EODs")
+    return ax
