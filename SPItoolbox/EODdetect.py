@@ -62,7 +62,11 @@ def plotIPI(
 
 
 def plotIPI_wraw(
-    t_EOD: np.ndarray, time: np.ndarray, rec_EOD: np.ndarray, xlim: np.ndarray
+    t_EOD: np.ndarray,
+    time: np.ndarray,
+    rec_EOD: np.ndarray,
+    xlim: np.ndarray,
+    ylim: np.ndarray,
 ) -> matplotlib.axes.Axes:
     """
     plot IPI with raw EOD recording traces
@@ -78,10 +82,10 @@ def plotIPI_wraw(
         matplotlib.axes.Axes: axes containing plots
     """
     n_ch = rec_EOD.shape[0]
-    _, axes = plt.subplots(n_ch + 1, 1)
+    _, axes = plt.subplots(n_ch + 1, 1, sharex=True)
     for i in range(n_ch):
         axes[i].plot(time, rec_EOD[i,])
-        axes[i].set_xlim(xlim)
-    _ = plotIPI(t_EOD, axes[n_ch]).set_xlim(xlim)
+    _ = plotIPI(t_EOD, axes[n_ch]).set_ylim(ylim)
+    axes[1].set_xlim(xlim)
     print(type(axes))
     return axes
