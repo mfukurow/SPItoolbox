@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 
 def sdf(
-    t_EOD: np.ndarray, width: float, max_tim: float = None, bin_siz=1
+    t_EOD: np.ndarray, width: float, max_tim: float = None, bin_siz: float = 1
 ) -> np.ndarray:
     """
     spike density function
